@@ -33,4 +33,4 @@ Steps:
   Expected behavior --> True
 - But it results in a HIP error, to fix it:
 - Simply run `export HSA_OVERRIDE_GFX_VERSION=11.0.0`[We are trying to override the graphic driver version to match 7900xt]/
-- Now again test the cuda availble process, it shoule fix the error.
+- Now again test the cuda availble process, it should fix the error.
