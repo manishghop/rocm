@@ -17,11 +17,11 @@ Steps:
 - After the gpu driveres are installed, you can check the gpu h/w info by running `rocminfo`
 - I also installed anaconda as its much easier to create venv using conda
 - Run [curl -O https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh](url)
-- Mostly curl won't be installed in your fresh ubuntu, so run sudo apt install curl
-- Then run bash ~/Downloads/Anaconda3-2020.05-Linux-x86_64.sh
+- Mostly curl won't be installed in your fresh ubuntu, so run `sudo apt install curl`
+- Then run `bash ~/Downloads/Anaconda3-2020.05-Linux-x86_64.sh`
 - There will be prompt to accept the license agreement do that.
 - Run `source <PATH_TO_CONDA>/bin/activate` [Need to replace the PATH_TO_CONDA to your conda path].
-- Hit conda init, this will take you to anaconda shell
+- Hit `conda init`, this will take you to anaconda shell
 - Now, we need to create a conda env with rocm enabled
 - Run `conda create -n rocm python=3.10`
 - Run `conda activate rocm`
@@ -29,9 +29,10 @@ Steps:
 - Run `pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm5.7`
 - To test cuda is available in pytorch, open a python shell, then run following commands:</br>
   `import torch`</br>
-  `torch.cuda.is_available()`
-  Expected behavior --> True, If it returns True, run one more test to check If cuda is enabled.
-- open Python shell by running
+  `torch.cuda.is_available()`</br>
+  Expected behavior --> True, If it returns True, we are good to proceed further. But If not, that means you haven't installed the rocm gpu drivers properly, you'd have to repeat the steps all over again.
+  We have to run one more test to check if cuda has been enabled.
+- open Python shell by running `python`
   ```
   $ python
   >>> import torch
