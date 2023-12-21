@@ -14,6 +14,7 @@ Steps:
 - Start a terminal & run below commands
 - `sudo apt-get update`
 - `sudo apt install amdgpu-install_5.7.50702-1_all.deb`
+- After the gpu driveres are installed, you can check the gpu h/w info by running `rocminfo`
 - I also installed anaconda as its much easier to create venv using conda
 - Run [curl -O https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh](url)
 - Mostly curl won't be installed in your fresh ubuntu, so run sudo apt install curl
@@ -33,4 +34,5 @@ Steps:
   Expected behavior --> True
 - But it results in a HIP error, to fix it:
 - Simply run `export HSA_OVERRIDE_GFX_VERSION=11.0.0`[We are trying to override the graphic driver version to match 7900xt]/
+  The gfx version for 7900xt currently supported is  gfx1100+ for rocm 5.7.
 - Now again test the cuda available process, it should fix the error.
