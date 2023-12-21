@@ -27,12 +27,21 @@ Steps:
 - Run `conda activate rocm`
 - Since we have rocm 5.7 installed,
 - Run `pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm5.7`
-- To test cuda is available in pytorch, open a python shell, then run following commands
-  `import torch;`
+- To test cuda is available in pytorch, open a python shell, then run following commands:</br>
+  `import torch`</br>
   `torch.cuda.is_available()`
-  
-  Expected behavior --> True
-- But it results in a HIP error, to fix it:
-- Simply run `export HSA_OVERRIDE_GFX_VERSION=11.0.0`[We are trying to override the graphic driver version to match 7900xt]/
-  The gfx version for 7900xt currently supported is  gfx1100+ for rocm 5.7.
+  Expected behavior --> True, If it returns True, run one more test to check If cuda is enabled.
+- open Python shell by running
+  ```
+  $ python
+  >>> import torch
+  >>> torch.rand(3,3).to("cuda")
+  ```
+  -> Expected behavior: </br>
+  ```
+  torch.tensor([],device="cuda:0")
+  ```
+  [If you get this, it means we have cuda up & running]. 
+- But If it results in a HIP error(which is most certain If you're not using a 7900xt), to fix it:
+- Simply run `export HSA_OVERRIDE_GFX_VERSION=11.0.0`[We are trying to override the graphic driver version to match 7900xt].</br>The gfx version for 7900xt currently supported is `gfx1100+` for rocm 5.7.
 - Now again test the cuda available process, it should fix the error.
